@@ -36,6 +36,7 @@ export const actions = {
         }
 
         data.append("writer", locals.user.id)
+        data.append("username", locals.user.username)
         data.append("user", JSON.stringify(locals.user))
         try {
             await locals.pb.collection("messages").create(data)

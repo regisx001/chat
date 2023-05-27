@@ -38,6 +38,6 @@
 	{JSON.stringify(data, null, 2)}
 </pre> -->
 
-<!-- <pre>
+<pre>
 	{JSON.stringify(messages, null, 2)}
-</pre> -->
+</pre>

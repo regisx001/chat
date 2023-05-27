@@ -53,61 +53,6 @@
 		"options": {}
 	},
 	{
-		"id": "4tx6cn1xe5ehnbw",
-		"name": "messages",
-		"type": "base",
-		"system": false,
-		"schema": [
-			{
-				"id": "jpjw75ya",
-				"name": "message",
-				"type": "text",
-				"system": false,
-				"required": false,
-				"options": {
-					"min": null,
-					"max": null,
-					"pattern": ""
-				}
-			},
-			{
-				"id": "ku3sbqkg",
-				"name": "room",
-				"type": "relation",
-				"system": false,
-				"required": false,
-				"options": {
-					"collectionId": "lx4ocw9dt1pj409",
-					"cascadeDelete": false,
-					"minSelect": null,
-					"maxSelect": 1,
-					"displayFields": []
-				}
-			},
-			{
-				"id": "drmpzhmj",
-				"name": "writer",
-				"type": "relation",
-				"system": false,
-				"required": false,
-				"options": {
-					"collectionId": "_pb_users_auth_",
-					"cascadeDelete": false,
-					"minSelect": null,
-					"maxSelect": 1,
-					"displayFields": []
-				}
-			}
-		],
-		"indexes": [],
-		"listRule": "",
-		"viewRule": "",
-		"createRule": "",
-		"updateRule": null,
-		"deleteRule": null,
-		"options": {}
-	},
-	{
 		"id": "_pb_users_auth_",
 		"name": "users",
 		"type": "auth",
@@ -156,5 +101,72 @@
 			"onlyEmailDomains": null,
 			"requireEmail": false
 		}
+	},
+	{
+		"id": "4tx6cn1xe5ehnbw",
+		"name": "messages",
+		"type": "base",
+		"system": false,
+		"schema": [
+			{
+				"id": "jpjw75ya",
+				"name": "message",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "ku3sbqkg",
+				"name": "room",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "lx4ocw9dt1pj409",
+					"cascadeDelete": false,
+					"minSelect": null,
+					"maxSelect": 1,
+					"displayFields": []
+				}
+			},
+			{
+				"id": "drmpzhmj",
+				"name": "writer",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "_pb_users_auth_",
+					"cascadeDelete": false,
+					"minSelect": null,
+					"maxSelect": 1,
+					"displayFields": []
+				}
+			},
+			{
+				"id": "isdwkiru",
+				"name": "username",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			}
+		],
+		"indexes": [],
+		"listRule": "",
+		"viewRule": "",
+		"createRule": "",
+		"updateRule": null,
+		"deleteRule": null,
+		"options": {}
 	}
 ]
