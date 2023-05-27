@@ -3,7 +3,7 @@ import { redirect, type Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 
-export const load = async ({ }: Parameters<PageServerLoad>[0]) => {
+export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
     throw redirect(300, "/")
 }
 

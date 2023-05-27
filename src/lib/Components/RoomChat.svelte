@@ -66,7 +66,7 @@
 						<div class="my-2 grid grid-cols-[1fr_auto] gap-2">
 							<div class="card p-4 rounded-tr-none space-y-2 variant-soft-success">
 								<header class="flex justify-between items-center">
-									<p class="font-bold">@{message.user.username}</p>
+									<p class="font-bold">@message.expand.writer.username</p>
 									<small class="opacity-50">{message.created}</small>
 								</header>
 								<p>{message.message}</p>
@@ -78,7 +78,7 @@
 							<Avatar src={'https://i.pravatar.cc'} width="w-12" />
 							<div class="card p-4 variant-soft rounded-tl-none space-y-2">
 								<header class="flex justify-between items-center">
-									<p class="font-bold">@{message.user.username}</p>
+									<p class="font-bold">@message.expand.writer.username</p>
 									<small class="opacity-50">{message.created}</small>
 								</header>
 								<p>{message.message}</p>
@@ -89,7 +89,7 @@
 			</section>
 			<!-- Prompt -->
 			<section
-				class="absolute bg-slate-800 right-0 bottom-0 w-full h-20 border-t border-surface-500/30 p-4"
+				class="absolute bg-surface-600 rounded-lg right-0 bottom-0 w-full h-20 border-t border-surface-500/30 p-4"
 			>
 				<form action="?/sendMessage" method="post" use:enhance={enhancement}>
 					<div class="flex rounded-md gap-4 flex-row input-group input-group-divider">

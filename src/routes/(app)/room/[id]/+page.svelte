@@ -3,24 +3,26 @@
 	import { page } from '$app/stores';
 	import { pb_client } from '$lib/Utils/utils';
 	import { onDestroy, onMount } from 'svelte';
-	import { record } from 'zod';
 	let data: any;
 	$: room_id = $page.data.id;
 	$: room = $page.data.room;
 	$: messages = room.expand['messages(room)'];
 	onMount(async () => {
-		pb_client.collection('messages').subscribe('*', async ({ record, action }) => {
-			if (action == 'create') {
-				if (record.room === room_id) {
-					messages = [...messages, record];
+		pb_client.collection('messages').subscribe('*', async (e) => {
+			data = e;
+			if (e.action == 'create') {
+				if (e.record.room === room_id) {
+					let user = await pb_client.collection('users').getOne(e.record.writer);
+					e.record.expand = { user };
+					messages = [...messages, e.record];
 				}
 			}
-			if (action == 'delete') {
-				if (record.room === room_id) {
-					messages = messages.filter((m: any) => m.id !== record.id);
+			if (e.action == 'delete') {
+				if (e.record.room === room_id) {
+					messages = messages.filter((m: any) => m.id !== e.record.id);
 				}
 			}
-			if (action == 'update') {
+			if (e.action == 'update') {
 				// Todo
 			}
 		});
@@ -34,8 +36,8 @@
 
 <!-- <pre>
 	{JSON.stringify(data, null, 2)}
-</pre>
+</pre> -->
 
-<pre>
+<!-- <pre>
 	{JSON.stringify(messages, null, 2)}
 </pre> -->

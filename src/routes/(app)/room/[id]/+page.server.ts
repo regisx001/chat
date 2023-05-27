@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
     try {
         const room = await locals.pb.collection("rooms").getOne(id, {
-            expand: `messages(room),host`
+            expand: `messages(room).writer,host`
         })
         return {
             room: serializeNonPOJO(room),
