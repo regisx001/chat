@@ -45,7 +45,7 @@
 </script>
 
 <section class="card w-full h-screen">
-	<div class="chat w-full h-full grid grid-cols-1 lg:grid-cols-[30%_1fr]">
+	<div class="chat w-full h-full grid grid-cols-1 lg:grid-cols-[20%_1fr]">
 		<!-- Navigation -->
 		<div class="hidden lg:grid grid-rows-[auto_1fr_auto] border-r border-surface-500/30">
 			<!-- Header -->
@@ -54,9 +54,26 @@
 			</header>
 			<!-- List -->
 			<div class="p-4 space-y-4 overflow-y-auto">
-				<pre>
-					{JSON.stringify(room.participants, null, 2)}
-				</pre>
+				<nav class="list-nav px-2">
+					<h3 class="text-center font-bold">Participants</h3>
+					<!-- (optionally you can provide a label here) -->
+					<ul>
+						{#each room.expand.participants || [] as participant}
+							<li>
+								<a href="/elements/lists">
+									<Avatar
+										width={'w-8'}
+										src={getAvatarUrl(participant)
+											? getAvatarUrl(participant)
+											: 'https://i.pravatar.cc'}
+									/>
+									<span class="flex-auto">@{participant.username}</span>
+								</a>
+							</li>
+						{/each}
+						<!-- ... -->
+					</ul>
+				</nav>
 			</div>
 			<!-- Footer -->
 			<!-- <footer class="border-t border-surface-500/30 p-4">(footer)</footer> -->
@@ -64,7 +81,10 @@
 		<!-- Chat -->
 		<div class="h-full relative flex flex-col flex-auto">
 			<!-- Conversation -->
-			<section bind:this={elemChat} class="max-h-screen pb-24 p-4 overflow-y-auto space-y-4">
+			<section
+				bind:this={elemChat}
+				class=" p-8 lg:px-28 max-h-screen pb-24 overflow-y-auto space-y-4"
+			>
 				{#each messages as message}
 					{#if current_user.id == message.writer}
 						<div class="my-2 grid grid-cols-[1fr_auto] gap-2">
@@ -76,18 +96,16 @@
 								<p>{message.message}</p>
 							</div>
 							<Avatar
-								src={getAvatarUrl(message.expand.writer)
-									? getAvatarUrl(message.expand.writer)
-									: 'https://i.pravatar.cc'}
+								src={getAvatarUrl(message.expand.writer) ? getAvatarUrl(message.expand.writer) : ''}
+								initials={message.expand.writer?.username}
 								width="w-12"
 							/>
 						</div>
 					{:else}
 						<div class="my-2 grid grid-cols-[auto_1fr] gap-2">
 							<Avatar
-								src={getAvatarUrl(message.expand.writer)
-									? getAvatarUrl(message.expand.writer)
-									: 'https://i.pravatar.cc'}
+								src={getAvatarUrl(message.expand.writer) ? getAvatarUrl(message.expand.writer) : ''}
+								initials={message.expand.writer?.username}
 								width="w-12"
 							/>
 							<div class="card p-4 variant-soft rounded-tl-none space-y-2">

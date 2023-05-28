@@ -39,5 +39,5 @@
 </pre> -->
 
 <pre>
-	{JSON.stringify(messages, null, 2)}
+	{JSON.stringify(room, null, 2)}
 </pre>

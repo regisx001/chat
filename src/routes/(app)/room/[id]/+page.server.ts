@@ -1,15 +1,19 @@
 import { serializeNonPOJO } from "$lib/Utils/utils"
+import { redirect } from "@sveltejs/kit"
 import type { Actions, PageServerLoad } from "./$types"
 
 
 
 export const load: PageServerLoad = async ({ locals, params }) => {
+    if (!locals.user) {
+        throw redirect(300, "/login")
+    }
     const id = params.id
 
 
     try {
         const room = await locals.pb.collection("rooms").getOne(id, {
-            expand: `messages(room).writer,host`
+            expand: `messages(room).writer,host,participants`
         })
         return {
             room: serializeNonPOJO(room),

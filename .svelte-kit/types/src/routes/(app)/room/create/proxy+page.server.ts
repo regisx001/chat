@@ -1,6 +1,12 @@
 // @ts-nocheck
-import type { Actions } from "@sveltejs/kit";
+import { redirect, type Actions } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
+export const load = async ({ locals }: Parameters<PageServerLoad>[0]) => {
+    if (!locals.user) {
+        throw redirect(300, "/login")
+    }
+}
 
 
 

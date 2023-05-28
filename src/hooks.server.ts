@@ -12,13 +12,13 @@ export const handle: Handle = async ({ event, resolve }) => {
         event.locals.user = event.locals.pb.authStore.model;
     }
 
-    // try {
-    //     // get an up-to-date auth store state by verifying and refreshing the loaded auth model (if any)
-    //     event.locals.pb.authStore.isValid && await event.locals.pb.collection('users').authRefresh();
-    // } catch (_) {
-    //     // clear the auth store on failed refresh
-    //     event.locals.pb.authStore.clear();
-    // }
+    try {
+        // get an up-to-date auth store state by verifying and refreshing the loaded auth model (if any)
+        event.locals.pb.authStore.isValid && await event.locals.pb.collection('users').authRefresh();
+    } catch (_) {
+        // clear the auth store on failed refresh
+        event.locals.pb.authStore.clear();
+    }
 
     const response = await resolve(event);
 
