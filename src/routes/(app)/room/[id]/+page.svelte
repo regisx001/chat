@@ -1,5 +1,5 @@
 <script lang="ts">
-	import RoomChat from '$lib/Components/RoomChat.svelte';
+	import RoomChat from '$lib/Pages/RoomChat.svelte';
 	import { page } from '$app/stores';
 	import { pb_client } from '$lib/Utils/utils';
 	import { onDestroy, onMount } from 'svelte';

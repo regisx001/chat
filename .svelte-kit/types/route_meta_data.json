@@ -1,6 +1,8 @@
 {
 	"/(auth)": [],
-	"/": [],
+	"/": [
+		"src/routes/+page.server.ts"
+	],
 	"/(auth)/login": [
 		"src/routes/(auth)/login/+page.server.ts"
 	],
@@ -9,6 +11,9 @@
 	],
 	"/(auth)/register": [
 		"src/routes/(auth)/register/+page.server.ts"
+	],
+	"/(app)/room/create": [
+		"src/routes/(app)/room/create/+page.server.ts"
 	],
 	"/(app)/room/[id]": [
 		"src/routes/(app)/room/[id]/+page.server.ts"

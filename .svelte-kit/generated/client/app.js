@@ -8,16 +8,18 @@ export const nodes = [
 	() => import('./nodes/4'),
 	() => import('./nodes/5'),
 	() => import('./nodes/6'),
-	() => import('./nodes/7')
+	() => import('./nodes/7'),
+	() => import('./nodes/8')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
-		"/": [3],
-		"/(auth)/login": [~5,[2]],
-		"/(auth)/logout": [~6,[2]],
-		"/(auth)/register": [~7,[2]],
+		"/": [~3],
+		"/(auth)/login": [~6,[2]],
+		"/(auth)/logout": [~7,[2]],
+		"/(auth)/register": [~8,[2]],
+		"/(app)/room/create": [~5],
 		"/(app)/room/[id]": [~4]
 	};
 

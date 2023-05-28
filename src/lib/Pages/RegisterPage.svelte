@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { enhance, type SubmitFunction } from '$app/forms';
+	import { enhance } from '$app/forms';
 	import { triggerToast } from '$lib/Utils/utils';
 	import { goto } from '$app/navigation';
+	import type { SubmitFunction } from '@sveltejs/kit';
 	$: image =
 		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2eJr5UCVdhYSWunmUZk99a7ZYbcQSgOItnw&usqp=CAU';
 	let showPassword = false;
