@@ -1,58 +1,5 @@
 [
 	{
-		"id": "lx4ocw9dt1pj409",
-		"name": "rooms",
-		"type": "base",
-		"system": false,
-		"schema": [
-			{
-				"id": "hw6shfsz",
-				"name": "host",
-				"type": "relation",
-				"system": false,
-				"required": false,
-				"options": {
-					"collectionId": "_pb_users_auth_",
-					"cascadeDelete": false,
-					"minSelect": null,
-					"maxSelect": 1,
-					"displayFields": []
-				}
-			},
-			{
-				"id": "fzgifm6w",
-				"name": "title",
-				"type": "text",
-				"system": false,
-				"required": false,
-				"options": {
-					"min": null,
-					"max": null,
-					"pattern": ""
-				}
-			},
-			{
-				"id": "sw2jvena",
-				"name": "description",
-				"type": "text",
-				"system": false,
-				"required": false,
-				"options": {
-					"min": null,
-					"max": null,
-					"pattern": ""
-				}
-			}
-		],
-		"indexes": [],
-		"listRule": "",
-		"viewRule": "",
-		"createRule": "",
-		"updateRule": null,
-		"deleteRule": null,
-		"options": {}
-	},
-	{
 		"id": "_pb_users_auth_",
 		"name": "users",
 		"type": "auth",
@@ -166,6 +113,73 @@
 		"viewRule": "",
 		"createRule": "",
 		"updateRule": null,
+		"deleteRule": null,
+		"options": {}
+	},
+	{
+		"id": "lx4ocw9dt1pj409",
+		"name": "rooms",
+		"type": "base",
+		"system": false,
+		"schema": [
+			{
+				"id": "hw6shfsz",
+				"name": "host",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "_pb_users_auth_",
+					"cascadeDelete": false,
+					"minSelect": null,
+					"maxSelect": 1,
+					"displayFields": []
+				}
+			},
+			{
+				"id": "fzgifm6w",
+				"name": "title",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "sw2jvena",
+				"name": "description",
+				"type": "text",
+				"system": false,
+				"required": false,
+				"options": {
+					"min": null,
+					"max": null,
+					"pattern": ""
+				}
+			},
+			{
+				"id": "tid0grc9",
+				"name": "participants",
+				"type": "relation",
+				"system": false,
+				"required": false,
+				"options": {
+					"collectionId": "_pb_users_auth_",
+					"cascadeDelete": false,
+					"minSelect": null,
+					"maxSelect": null,
+					"displayFields": []
+				}
+			}
+		],
+		"indexes": [],
+		"listRule": "",
+		"viewRule": "",
+		"createRule": "",
+		"updateRule": "@request.auth.id=host.id",
 		"deleteRule": null,
 		"options": {}
 	}
