@@ -53,7 +53,11 @@
 				<input class="input" type="search" placeholder="Search..." />
 			</header>
 			<!-- List -->
-			<div class="p-4 space-y-4 overflow-y-auto">LIST</div>
+			<div class="p-4 space-y-4 overflow-y-auto">
+				<pre>
+					{JSON.stringify(room.participants, null, 2)}
+				</pre>
+			</div>
 			<!-- Footer -->
 			<!-- <footer class="border-t border-surface-500/30 p-4">(footer)</footer> -->
 		</div>
@@ -111,6 +115,7 @@
 							name="message"
 							id=""
 						/>
+						<input value={room.participants} type="hidden" name="participants" multiple />
 						<input type="hidden" name="room" value={room.id} />
 						<button class="btn input-group-shim rounded-md variant-filled-secondary">
 							<i class="ti ti-send text-lg" />

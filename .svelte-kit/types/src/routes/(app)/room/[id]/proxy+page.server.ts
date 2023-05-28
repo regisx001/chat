@@ -30,16 +30,30 @@ export const load = async ({ locals, params }: Parameters<PageServerLoad>[0]) =>
 export const actions = {
     sendMessage: async ({ request, params, locals }: import('./$types').RequestEvent) => {
         let data = await request.formData()
+        const participants = String(data.get("participants")).split(",")
+        data.delete("participants")
 
         if (data.get("message") === "") {
             return
         }
 
+
+
         data.append("writer", locals.user.id)
         data.append("username", locals.user.username)
         data.append("user", JSON.stringify(locals.user))
+
         try {
             await locals.pb.collection("messages").create(data)
+
+            if (participants.includes(locals.user.id)) {
+                console.log("")
+            } else {
+                await locals.pb.collection("rooms").update(params.id, {
+                    participants: [...participants, locals.user.id]
+                })
+            }
+
         } catch (error) {
 
         }
