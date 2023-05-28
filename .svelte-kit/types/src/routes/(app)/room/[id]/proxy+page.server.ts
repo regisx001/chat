@@ -14,7 +14,7 @@ export const load = async ({ locals, params }: Parameters<PageServerLoad>[0]) =>
 
     try {
         const room = await locals.pb.collection("rooms").getOne(id, {
-            expand: `messages(room).writer,host,participants`
+            expand: `messages(room).writer,host,participants`,
         })
         return {
             room: serializeNonPOJO(room),
