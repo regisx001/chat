@@ -36,7 +36,6 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const SHLVL: string;
 	export const HOME: string;
-	export const OLDPWD: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
 	export const DESKTOP_SESSION: string;
 	export const NVM_BIN: string;
@@ -173,7 +172,6 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		SHLVL: string;
 		HOME: string;
-		OLDPWD: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
 		DESKTOP_SESSION: string;
 		NVM_BIN: string;

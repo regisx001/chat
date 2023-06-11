@@ -10,6 +10,14 @@
 	let elemChat: HTMLElement;
 	let messageInput: HTMLElement;
 
+	import { goto, afterNavigate } from '$app/navigation';
+	import { base } from '$app/paths';
+
+	let previousPage: string = base;
+
+	afterNavigate(({ from }) => {
+		previousPage = from?.url.pathname || previousPage;
+	});
 	function scrollChatBottom(behavior?: ScrollBehavior): void {
 		elemChat.scrollTo({ top: elemChat.scrollHeight, behavior });
 	}
@@ -23,7 +31,7 @@
 		let output = ``;
 		if (difference < 60) {
 			// Less than a minute has passed:
-			output = `${Math.round(difference)} seconds ago`;
+			output = `${Math.floor(difference)} seconds ago`;
 		} else if (difference < 3600) {
 			// Less than an hour has passed:
 			output = `${Math.floor(difference / 60)} minutes ago`;
@@ -71,13 +79,16 @@
 	});
 </script>
 
-<section class="card w-full h-screen">
+<section class="card w-full h-screen rounded-none">
 	<div class="chat w-full h-full grid grid-cols-1 lg:grid-cols-[20%_1fr]">
 		<!-- Navigation -->
 		<div class="hidden lg:grid grid-rows-[auto_1fr_auto] border-r border-surface-500/30">
 			<!-- Header -->
-			<header class="border-b border-surface-500/30 p-4">
-				<input class="input" type="search" placeholder="Search..." />
+			<header class="border-b border-surface-500/30 p-2">
+				<a href={previousPage} class="btn flex items-center gap-4">
+					<i class="ti ti-arrow-narrow-left text-3xl" />
+					<p class="text-xl font-bold">Go back</p>
+				</a>
 			</header>
 			<!-- List -->
 			<div class="p-4 space-y-4 overflow-y-auto">

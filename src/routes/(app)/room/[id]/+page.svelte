@@ -32,6 +32,12 @@
 	});
 </script>
 
+<svelte:head>
+	<title>
+		{room.title}
+	</title>
+</svelte:head>
+
 <RoomChat current_user={$page.data.user} {messages} {room} />
 
 <!-- <pre>
