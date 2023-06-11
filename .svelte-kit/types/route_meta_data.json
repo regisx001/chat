@@ -17,5 +17,8 @@
 	],
 	"/(app)/room/[id]": [
 		"src/routes/(app)/room/[id]/+page.server.ts"
+	],
+	"/(app)/room/[id]/details": [
+		"src/routes/(app)/room/[id]/details/+page.server.ts"
 	]
 }
